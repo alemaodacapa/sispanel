@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "pip" # Para projetos Python
+    directory: "/src" # Localização do requirements.txt
+    schedule:
+      interval: "weekly"
