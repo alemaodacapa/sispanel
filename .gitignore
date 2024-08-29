@@ -1,25 +1,24 @@
-# CakePHP 3
-
-/vendor/*
-/config/app.php
-
-/tmp/cache/models/*
-!/tmp/cache/models/empty
-/tmp/cache/persistent/*
-!/tmp/cache/persistent/empty
-/tmp/cache/views/*
-!/tmp/cache/views/empty
-/tmp/sessions/*
-!/tmp/sessions/empty
-/tmp/tests/*
-!/tmp/tests/empty
-
-/logs/*
-!/logs/empty
-
-# CakePHP 2
-
-/app/tmp/*
-/app/Config/core.php
-/app/Config/database.php
-/vendors/*
+/public_html
+│
+├── /
+│   ├── login.php
+│   ├── registro.php
+│   ├── relatorio.php
+│   ├── painel.php
+│   ├── valicao_atendimento.php
+│   ├── validados.php
+│   ├── processa_cadastro.php
+│   ├── validacao_gerente.php
+│   └── processa_login.php
+│
+├── /
+│   ├── audio/chamada.wav
+│   ├── css/bootstrap.css
+│   ├── css/style.css
+│   ├── js/main.js
+│   ├── js/script.js
+│   ├── lib/jquery-3.3.1.min.js
+│   └── img/att.jpg
+│
+├── .htaccess
+└── README.txt
