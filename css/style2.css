@@ -1,0 +1,210 @@
+/* Configurações de cores e fontes */
+:root {
+    --fundo-primario: #003a5f;
+    --fundo-caixa: #ffffff;
+    --texto-primario: #333333;
+    --texto-secundario: #666666;
+    --destaque: #007bff;
+    --fundo-claro: #f2f2f2;
+    --sucesso: #d4edda;
+    --erro: #f8d7da;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0e0e0;
+    margin: 0;
+    color: var(--texto-primario);
+}
+
+/* Barra Superior */
+.barraSuperior {
+    height: 200px;
+    background-color: var(--fundo-primario);
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.uespiLogo, .sisuLogo {
+    max-width: 100px;
+}
+
+.uespiTexto {
+    font-size: 1.8em;
+    font-weight: 800;
+    color: #fff;
+}
+
+.subtitulo {
+    font-size: 1.2em;
+    color: #ddd;
+    font-weight: 400;
+}
+
+/* Caixa de Senha Atual */
+.senhaAtual {
+    background-color: var(--fundo-primario);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.senhaAtualTexto {
+    font-size: 3em;
+    font-weight: 400;
+}
+
+#senhaAtualNumero {
+    font-size: 5em;
+    font-weight: 800;
+    color: var(--destaque);
+}
+
+/* Caixa de Última Senha */
+.ultimaSenha {
+    background-color: var(--fundo-claro);
+    color: var(--texto-secundario);
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+#ultimaSenhaTexto {
+    font-size: 1.2em;
+    color: #a50;
+}
+
+#ultimaSenhaNumero {
+    font-size: 2em;
+    color: #000;
+}
+
+/* Alertas de Sucesso e Erro */
+.alert {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: var(--sucesso);
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background-color: var(--erro);
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Botões */
+.botao {
+    background-color: var(--destaque);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.botao:hover {
+    background-color: #0056b3;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.container {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+.footer a {
+    color: var(--destaque);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+.barraSuperior {
+    height: 80px; /* Aumente a altura da barra superior */
+    padding: 10px 20px; /* Adicione padding para espaçamento interno */
+    background-color: #003a5f; /* Cor de fundo */
+    display: flex; /* Use flexbox para alinhar itens */
+    align-items: center; /* Centraliza verticalmente os itens */
+    justify-content: space-between; /* Espaça os itens entre si */
+}
+
+.uespiLogo {
+    max-width: 120px; /* Aumente o tamanho máximo do logo */
+}
+
+.text-container {
+    flex-grow: 1; /* Permite que o texto ocupe o espaço restante */
+    text-align: right; /* Alinha o texto à direita */
+}
+
+.text-container span {
+    font-size: 28px; /* Aumente o tamanho do texto */
+    font-weight: bold; /* Negrito para o título */
+}
+
+.text-container small {
+    font-size: 14px; /* Tamanho menor para o subtítulo */
+    color: #c9c9c9; /* Cor do subtítulo */
+}
+
+.info-link {
+    font-size: 14px; /* Tamanho do link de informação */
+    color: white; /* Cor do texto do link */
+    text-decoration: none; /* Remove o sublinhado */
+    margin-left: 10px; /* Margem esquerda para espaçamento */
+}
+@media (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-direction: column; /* Muda a direção do layout para coluna */
+        align-items: center; /* Centraliza as caixas */
+        padding: 10px; /* Adiciona algum padding lateral */
+    }
+
+    .caixa {
+        width: 100%; /* Faz as caixas ocuparem 100% da largura */
+        max-width: 400px; /* Define uma largura máxima para as caixas */
+        margin: 10px 0; /* Adiciona margem entre as caixas */
+    }
+
+    .video-container {
+        height: auto; /* Deixa a altura do vídeo automática */
+    }
+}
