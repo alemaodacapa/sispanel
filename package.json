@@ -1,0 +1,27 @@
+{
+  "name": "consultorio",
+  "version": "1.0.0",
+  "description": "Painel de Atendimento para Consultório",
+  "main": "server.js", // O ponto de entrada do seu aplicativo
+  "scripts": {
+    "start": "node server.js", // Comando para iniciar o servidor
+    "build": "echo 'Nenhum build específico definido'", // Placeholder, pode ser removido se não precisar
+    "test": "echo 'Nenhum teste definido'" // Placeholder para testes
+  },
+  "keywords": [
+    "consultório",
+    "atendimento",
+    "Node.js",
+    "Express",
+    "MySQL"
+  ],
+  "author": "Leonardo Frederico de Paula", // Substitua pelo seu nome
+  "license": "ISC", // Licença do projeto
+  "dependencies": {
+    "express": "^4.18.2", // Adiciona a dependência do Express
+    "mysql": "^2.18.1" // Adiciona a dependência do MySQL
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22" // Para desenvolvimento, reinicia o servidor automaticamente
+  }
+}
