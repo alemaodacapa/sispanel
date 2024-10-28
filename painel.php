@@ -60,42 +60,39 @@ $conn->close();
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <!-- Favicon -->
     <link href="/img/att.jpg" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Consultório</title>
-
-    <!-- CSS -->
+    <meta name="keywords" content="Gerenciador de Filas, Painel de Atendimento, Gestão de Senhas, Senhas Preferenciais, Senhas Normais, Caixa de Atendimento, Atualização Automática, Narração de Senhas, Som de Notificação, Painel Administrativo, Relatório de Atendimento, Senhas Automáticas, Sistema de Fila Única, Interface de Atendimento, Sistema de Senhas Online, Gestão de Clientes, Atendimento ao Cliente, Acessibilidade no Atendimento, Senhas Eletrônicas, Solução de Filas"/>
+    <meta property="og:description" content="Sis Panel - Gerenciador de Filas para Consultório Online"/>
+    <meta property="og:image" content="https://caixa.e-painel.x10.mx/img/banner2.jpg" />
+    <meta name="robots" content="index,follow">
+    <title>Sis Panel - Gerenciador de Filas para Consultório Online</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <!-- JS -->
     <script src="lib/jquery-3.3.1.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/inject.js"></script>
     <script src="js/funcoes_painel.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
-    <script src="server.js"></script>
-
+    <script src="js/painel.js"</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s) {
-            if(f.fbq)return;n=f.fbq=function() {
-                n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
-            };
-            if(!f._fbq) f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)
-        }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '4299889786786958');
-        fbq('track', 'PageView');
-    </script>
-    <noscript>
-        <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=4299889786786958&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4299889786786958');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4299889786786958&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
     <!-- Estilos -->
     <style>
@@ -144,12 +141,13 @@ $conn->close();
             text-align: center; /* Centraliza o texto */
             color: white; /* Cor do texto */
             margin-bottom: 20px; /* Margem abaixo */
+            position: relative;
         }
 
         .video-container {
             position: relative;
             width: 100%;
-            height: 150px; /* Altura reduzida para melhor visualização em dispositivos móveis */
+            height: 200px; /* Altura reduzida para melhor visualização em dispositivos móveis */
             overflow: hidden;
         }
 
@@ -181,9 +179,8 @@ $conn->close();
             color: white;
             text-align: center;
             padding: 10px;
-            position: fixed;
+            position: auto;
             width: 100%;
-            bottom: 0;
             font-size: 14px; /* Tamanho da fonte do footer */
         }
 
@@ -266,7 +263,7 @@ $conn->close();
         <div class="row">
             <div class="col-xs-6">
                 <div class="campo-consultorio">
-                    <div><strong>CONSULTÓRIO</strong></div>
+                    <center><div><strong>CONSULTÓRIO</strong></div></center>
                     <div id="info">
                         <strong id="tipoSenha" style="font-size: 15px; font-weight: bold;">
                             <?php echo strtoupper($cliente['tipo_senha']); ?>
