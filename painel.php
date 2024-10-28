@@ -204,7 +204,9 @@ $conn->close();
             }
 
             .campo-consultorio, .campo-caixa, .campo-consultorio-paciente {
-                font-size: 20px; /* Fonte menor */
+                font-size: 22px; /* Fonte menor */
+                position: auto;
+                padding: 10px; /* Menos padding */
             }
 
             .video-container {
