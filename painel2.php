@@ -71,6 +71,13 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Atendimento</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="css/bootstrap2.css" rel="stylesheet">
+    <link href="css/style3.css" rel="stylesheet">
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/funcoes_painel.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
     <style>
         /* Estilos gerais */
         * {
@@ -87,7 +94,7 @@ $conn->close();
             min-height: 100vh;
             align-items: center;
         }
-
+        
         /* Barra superior */
         .barraSuperior {
             background-color: #003a5f;
@@ -115,25 +122,32 @@ $conn->close();
             background: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            padding: 0; /* Remove padding para maximizar o espaço para o vídeo */
-            position: relative; /* Para posicionar o botão sobre a caixa */
+            padding: 40px; /* Aumenta o padding */
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: #333;
+            font-size: 1.8rem; /* Aumenta o tamanho da fonte */
         }
 
         .caixa-titulo {
             font-weight: bold;
             font-size: 2.2rem; /* Aumenta o tamanho do título */
-            margin-bottom: 10px; /* Reduz a margem do título */
+            margin-bottom: 15px;
             color: #007bff;
-            text-align: center; /* Centraliza o título */
         }
 
+        .caixa:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilo do vídeo */
         .video-container {
             position: relative;
             overflow: hidden;
-            width: 100%; /* Faz o vídeo ocupar 100% da largura da caixa */
-            height: 100%; /* Faz o vídeo ocupar 100% da altura da caixa */
+            border-radius: 10px;
+            margin: 10px 0;
             background-color: #000; /* Fundo preto para o vídeo */
-            border-radius: 10px; /* Mantém os cantos arredondados */
         }
 
         .video-container video {
@@ -145,22 +159,20 @@ $conn->close();
 
         /* Botão Visitar o Site */
         .botao-visitar {
-            position: absolute; /* Permite que o botão seja posicionado sobre o vídeo */
-            bottom: 10px; /* Distância do botão do fundo */
-            left: 50%; /* Centraliza horizontalmente */
-            transform: translateX(-50%); /* Ajusta a posição para centralizar corretamente */
-            padding: 10px 20px; /* Ajusta o tamanho do botão */
-            background-color: rgba(0, 123, 255, 0.8); /* Botão com fundo azul semi-transparente */
+            display: inline-block;
+            padding: 15px 30px; /* Aumenta o tamanho do botão */
+            background-color: #007bff;
             color: #fff;
             border-radius: 5px;
             text-decoration: none;
+            margin-top: 10px;
             font-weight: bold;
             transition: background-color 0.3s, transform 0.2s;
-            font-size: 1.2rem; /* Diminui o tamanho da fonte do botão */
+            font-size: 1.5rem; /* Aumenta o tamanho da fonte do botão */
         }
 
         .botao-visitar:hover {
-            background-color: rgba(0, 86, 179, 0.8); /* Efeito ao passar o mouse */
+            background-color: #0056b3;
             transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
         }
 
@@ -236,8 +248,8 @@ $conn->close();
                 <source src="video/SEO_Summerside.mp4" type="video/mp4">
                 Seu navegador não suporta vídeo HTML5.
             </video>
-            <a href="https://painelsummerside.com.br" class="botao-visitar">Visitar o Site</a>
         </div>
+        <a href="https://painelsummerside.com.br" class="botao-visitar" style="color: blue">Visitar o Site</a>
     </div>
     <div class="caixa">
         <div class="caixa-titulo">ANÚNCIO</div>
@@ -246,8 +258,8 @@ $conn->close();
                 <source src="video/google_meu_negocio.mp4" type="video/mp4">
                 Seu navegador não suporta vídeo HTML5.
             </video>
-            <a href="https://painelsummerside.com.br" class="botao-visitar">Visitar o Site</a>
         </div>
+        <a href="https://painelsummerside.com.br" class="botao-visitar">Visitar o Site</a>
     </div>
 </main>
 
@@ -301,3 +313,5 @@ $conn->close();
 </script>
 </body>
 </html>
+
+
