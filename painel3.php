@@ -43,6 +43,9 @@ $conn->close();
     <link href="css/style3.css" rel="stylesheet">
     <script src="lib/jquery-3.3.1.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/funcoes_painel.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <style>
     body {
@@ -53,6 +56,8 @@ $conn->close();
         min-height: 100vh;
         align-items: center;
         font-family: 'Cairo', sans-serif;
+        margin: 0;
+        padding: 0;
     }
 
     .barraSuperior {
@@ -155,17 +160,18 @@ $conn->close();
             align-items: center;
             padding: 10px;
         }
+        
         .titulo {
-        font-size: 1rem; /* Ajuste o tamanho da fonte conforme necessário */
-        margin-left: 10px; /* Espaço entre o logo e o título */
-    }
+            font-size: 1rem; /* Ajuste o tamanho da fonte conforme necessário */
+            margin-left: 10px; /* Espaço entre o logo e o título */
+        }
 
         .caixa {
             width: 100%;
             max-width: 400px;
             margin: 5px 0;
             padding: 5px;
-            height: 400; /* Permite que as caixas se ajustem sem rolagem */
+            height: auto; /* Permite que as caixas se ajustem sem rolagem */
         }
 
         .caixa .numero {
@@ -181,6 +187,23 @@ $conn->close();
             border-radius: 5px;
             margin: 0;
         }
+
+        .campo-caixa,
+        .caixa-normal,
+        .caixa-anterior {
+            font-size: 20px; /* Tamanho da fonte ajustado */
+            padding: 10px; /* Ajusta o padding */
+        }
+
+        .campo-caixa-usuario {
+            font-size: 20px; /* Tamanho da fonte ajustado */
+            padding: 10px; /* Ajusta o padding */
+        }
+
+        .barraSuperior {
+            height: auto; /* Ajusta a altura para dispositivos móveis */
+            padding: 10px; /* Reduzir o padding para economizar espaço */
+        }
     }
 
     /* Ajustes específicos para desktop */
@@ -190,7 +213,7 @@ $conn->close();
             max-width: auto;
             margin: 3px 20;
             padding: 15px; /* Mantém o padding em desktop */
-            height: 400; /* Permite que as caixas se ajustem ao conteúdo */
+            height: auto; /* Permite que as caixas se ajustem ao conteúdo */
         }
 
         .caixa-titulo {
@@ -202,16 +225,72 @@ $conn->close();
         }
 
         .video-container {
-            height: 400;
+            height: 400px; /* Altura da caixa de vídeo */
             border-radius: 5px;
             margin: 0;
         }
+
         .titulo {
-        font-size: 3rem; /* Ajuste o tamanho da fonte conforme necessário */
-        margin-left: 10px; /* Espaço entre o logo e o título */
+            font-size: 3rem; /* Ajuste o tamanho da fonte conforme necessário */
+            margin-left: 10px; /* Espaço entre o logo e o título */
+        }
+        
+        .campo-caixa,
+        .caixa-normal,
+        .caixa-anterior {
+            font-size: 35px; /* Tamanho da fonte ajustado */
+            padding: 18px; /* Ajusta o padding */
+        }
+
+        .campo-caixa-usuario {
+            font-size: 35px; /* Tamanho da fonte ajustado */
+            padding: 18px; /* Ajusta o padding */
+        }
     }
-}
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .campo-caixa,
+        .caixa-normal,
+        .caixa-anterior {
+            font-size: 30px;
+            padding: 15px;
+        }
+
+        .campo-caixa-usuario {
+            font-size: 30px;
+            padding: 15px;
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .campo-caixa,
+        .caixa-normal,
+        .caixa-anterior {
+            font-size: 35px;
+            padding: 18px;
+        }
+
+        .campo-caixa-usuario {
+            font-size: 35px;
+            padding: 18px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .campo-caixa,
+        .caixa-normal,
+        .caixa-anterior {
+            font-size: 40px;
+            padding: 20px;
+        }
+
+        .campo-caixa-usuario {
+            font-size: 40px;
+            padding: 20px;
+        }
+    }
 </style>
+
 
 <!-- Inclua seu logo na barra superior -->
 <div class="barraSuperior">
@@ -265,40 +344,44 @@ $conn->close();
 </footer>
 
 <audio id="audioChamada" src="audio/chamada.wav"></audio>
-<audio id="audioNarracao" src="audio/narracao.mp3"></audio>
 
-<script>
-    function tocarAudio() {
-        const audio = document.getElementById('audioChamada');
-        audio.play();
-    }
+    <script>
+        // Função para tocar o áudio
+        function tocarAudio() {
+            const audio = document.getElementById('audioChamada');
+            audio.play();
+        }
 
-    function tocarNarracao() {
-        const narracao = document.getElementById('audioNarracao');
-        narracao.play();
-    }
+        // Função para narrar texto
+        function narrarTexto(texto) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(texto);
+                speechSynthesis.speak(utterance);
+            } else {
+                alert('Navegador não suporta síntese de fala.');
+            }
+        }
 
-    function atualizarDados() {
-        const nomeCliente = document.getElementById('nomeCliente');
-        const senhaGerada = document.getElementById('senhaGerada');
+        // Função para narrar o nome do cliente e a senha gerada ao carregar a página
+        function narrarInformacoes() {
+            const nomeCliente = document.getElementById('nomeCliente').textContent;
+            const senhaGerada = document.getElementById('senhaGerada').textContent;
+            narrarTexto(`Senha gerada para ${nomeCliente} é ${senhaGerada}`);
+        }
 
-        const nome = '<?php echo $cliente['nome']; ?>'; 
-        const senha = '<?php echo $cliente['senha_gerada']; ?>'; 
-
-        nomeCliente.innerHTML = `<strong>${nome}</strong>`;
-        senhaGerada.innerHTML = `<strong>${senha}</strong>`;
-
-        tocarNarracao();
-    }
-
-    atualizarDados();
-    setInterval(atualizarDados, 10000);
-    setInterval(function() {
-        location.reload();
-    }, 40000);
-
-    tocarAudio();
-</script>
+        // Executa as funções quando a página é carregada
+        window.onload = function() {
+            tocarAudio(); // Toca o áudio
+            narrarInformacoes();
+            
+            // Atualiza a página a cada 25 segundos
+            setInterval(function() {
+                location.reload();
+            }, 25000); // 25000 milissegundos = 25 segundos
+        };
+    </script>
 </body>
 </html>
+
+
 
