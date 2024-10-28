@@ -1,84 +1,174 @@
+/* Estilos Gerais */
+body {
+    background-color: #ffffff; /* Cor de fundo */
+    color: #000000; /* Cor do texto */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove padding padrão */
+}
+
+/* Estilos da Barra Superior */
 .barraSuperior {
-    height: 200px;
-    margin-top: 10px;
-    background-color: #003a5f; /* Atualizando a cor de fundo */
-}
-
-.senhaAtual {
-    text-align: center;
-    background-color: #003a5f; /* Cor de fundo */
+    background-color: #003a5f; /* Cor de fundo da barra superior */
+    padding: 20px; /* Padding para maior área clicável */
     color: white; /* Cor do texto */
-    margin-top: 0px;
-    padding: 10px; /* Adicionando padding para espaçamento interno */
+    margin-bottom: 15px; /* Margem abaixo */
+    text-align: center; /* Centraliza o texto */
+    display: flex; /* Usar flexbox para centralizar conteúdo */
+    flex-direction: column; /* Alinha em coluna para mobile */
+    align-items: center; /* Alinha itens ao centro */
 }
 
-.senhaAtualTexto {
-    font-size: 65pt;
-    font-weight: 400;
-}
-
-#senhaAtualNumero {
-    font-size: 100pt;
-    font-weight: 800;
-}
-
-.ultimaSenha {
-    font-weight: 800;
-    text-align: center;
-    background-color: #f2f2f2; /* Cor de fundo atualizada para melhor contraste */
-    height: 130px;
-    margin-top: 20px;
-    padding: 10px; /* Adicionando padding para espaçamento interno */
-}
-
-#ultimaSenhaTexto {
-    font-size: 20px;
-    color: #a50; /* Cor do texto */
-}
-
-#ultimaSenhaNumero {
-    font-size: 40px;
-    color: black; /* Cor do número */
-}
-
+/* Estilos do Logo UESPI */
 .uespiLogo {
-    max-width: 100px;
+    height: 60px; /* Altura do logo ajustada */
+    margin-bottom: 10px; /* Espaço abaixo do logo */
 }
 
-.sisuLogo {
-    max-width: 400px;
-}
-
+/* Estilos do Texto UESPI */
 .uespiTexto {
-    font-size: 27pt;
-    font-weight: 800;
-    color: #003a5f; /* Cor do texto */
+    font-size: 24px; /* Tamanho da fonte aumentado */
+    font-weight: bold; /* Peso da fonte */
 }
 
+/* Estilos do Subtítulo */
 .subtitulo {
-    font-size: 30px;
-    font-weight: 400;
+    font-size: 18px; /* Tamanho da fonte aumentado */
 }
 
-audio {
-    display: none;
-}
-.alert {
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
+/* Estilos do Container Principal */
+.container.page {
+    padding: 20px; /* Aumentando o espaçamento interno */
 }
 
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+/* Estilos das Caixas */
+.campo-consultorio,
+.campo-caixa,
+.campo-consultorio-paciente {
+    background-color: #007bff; /* Cor de fundo das caixas */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Mais padding para conforto visual */
+    font-size: 26px; /* Tamanho da fonte ajustado */
+    text-align: center; /* Centraliza o texto */
+    color: white; /* Cor do texto */
+    margin-bottom: 15px; /* Margem abaixo */
+    transition: background-color 0.3s; /* Efeito de transição suave */
 }
 
-.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+.campo-consultorio:hover,
+.campo-caixa:hover,
+.campo-consultorio-paciente:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilos da Caixa de Última Senha */
+.caixa-anterior {
+    background-color: #f2f2f2; /* Cor de fundo clara */
+    color: black; /* Cor do texto */
+    padding: 15px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 15px; /* Margem abaixo */
+}
+
+/* Estilos do Nome do Paciente */
+.campo-caixa-usuario {
+    background-color: #e0e0e0; /* Cor de fundo diferente para destaque */
+    padding: 15px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilos do Container de Vídeo */
+.video-container {
+    position: relative; /* Para posicionar o link sobre o vídeo */
+    width: 100%; /* Largura total */
+    height: 250px; /* Altura ajustada para mobile */
+    overflow: hidden; /* Oculta overflow */
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Estilos do Vídeo */
+.video-container video {
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    display: block; /* Exibe como bloco */
+}
+
+/* Estilos do Link sobreposto ao vídeo */
+.link-overlay {
+    position: absolute; /* Posiciona o link sobre o vídeo */
+    top: 0; /* Alinha ao topo */
+    left: 0; /* Alinha à esquerda */
+    right: 0; /* Alinha à direita */
+    bottom: 0; /* Alinha à parte inferior */
+    z-index: 1; /* Coloca acima do vídeo */
+    text-decoration: none; /* Remove sublinhado */
+    background: rgba(0, 0, 0, 0.0); /* Fundo semi-transparente */
+    display: flex; /* Flex para centrar o conteúdo */
+    align-items: center; /* Alinha verticalmente ao centro */
+    justify-content: center; /* Alinha horizontalmente ao centro */
+    color: white; /* Cor do texto do link */
+    font-size: 24px; /* Tamanho da fonte do link */
+    transition: background 0.3s; /* Efeito de transição suave */
+}
+
+.link-overlay:hover {
+    background: rgba(0, 0, 0, 0.0); /* Escurece ao passar o mouse */
+}
+
+/* Estilos do Footer */
+.footer {
+    background-color: #003a5f; /* Cor de fundo do footer */
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    padding: 15px; /* Espaçamento interno */
+    position: relative; /* Fixa o footer na parte inferior */
+    width: 100%; /* Largura total */
+}
+
+/* Estilos do Link do Footer */
+.footer a {
+    color: #ffff00; /* Cor do link */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Sublinha ao passar o mouse */
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .barraSuperior {
+        padding: 15px; /* Menos padding para telas menores */
+    }
+
+    .uespiTexto {
+        font-size: 20px; /* Tamanho da fonte reduzido */
+    }
+
+    .subtitulo {
+        font-size: 16px; /* Tamanho da fonte reduzido */
+    }
+
+    .campo-consultorio,
+    .campo-caixa,
+    .campo-consultorio-paciente {
+        font-size: 20px; /* Tamanho da fonte reduzido em mobile */
+        padding: 15px; /* Menos padding em mobile */
+    }
+
+    .caixa-anterior,
+    .campo-caixa-usuario {
+        font-size: 16px; /* Tamanho da fonte reduzido em mobile */
+        padding: 10px; /* Menos padding em mobile */
+    }
+
+    .video-container {
+        height: 200px; /* Altura reduzida para melhor visualização em dispositivos móveis */
+    }
+
+    .link-overlay {
+        font-size: 20px; /* Tamanho do texto reduzido no overlay */
+    }
 }
