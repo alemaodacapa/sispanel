@@ -38,7 +38,16 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Atendimento</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style5.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- JS -->
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/funcoes_painel.js"></script>
+    <script src="server.js"></script>
     <style>
         /* Estilos gerais */
         * {
@@ -47,6 +56,7 @@ $conn->close();
             padding: 0;
             font-family: 'Arial', sans-serif;
         }
+
         body {
             background: linear-gradient(135deg, #007bff, #5a5aff);
             color: #fff;
@@ -54,87 +64,93 @@ $conn->close();
             flex-direction: column;
             min-height: 100vh;
             align-items: center;
+            transition: background-color 0.5s;
         }
-        
+
         /* Barra superior */
         .barraSuperior {
             background-color: #003a5f;
             color: #fff;
             padding: 20px;
-            font-size: 2.5rem; /* Aumenta o tamanho da fonte */
+            font-size: 2.5rem;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             width: 100%;
+            border-bottom: 5px solid #007bff;
         }
 
         /* Container principal */
         .container {
             flex: 1;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Caixas responsivas */
-            gap: 20px; /* Espaçamento entre as caixas */
+            grid-template-columns: repeat(3, 1fr); /* Alinha 3 colunas */
+            gap: 20px;
             padding: 20px;
             width: 100%;
-            max-width: 1200px; /* Limita a largura máxima */
+            max-width: 1200px;
         }
 
         /* Estilo da caixa */
         .caixa {
-            background: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            padding: 40px; /* Aumenta o padding */
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            color: #333;
-            font-size: 1.8rem; /* Aumenta o tamanho da fonte */
-        }
-
-        .caixa-titulo {
-            font-weight: bold;
-            font-size: 2.2rem; /* Aumenta o tamanho do título */
-            margin-bottom: 15px;
-            color: #007bff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-height: 150px; /* Altura mínima para alinhamento */
         }
 
         .caixa:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .caixa-titulo {
+            font-weight: bold;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #007bff;
+            text-align: center;
         }
 
         /* Estilo do vídeo */
         .video-container {
             position: relative;
             overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
             border-radius: 10px;
-            margin: 10px 0;
-            background-color: #000; /* Fundo preto para o vídeo */
         }
 
         .video-container video {
             width: 100%;
-            height: 100%; /* Garante que o vídeo preencha a altura */
-            object-fit: cover; /* Mantém a proporção do vídeo */
+            height: 100%;
+            object-fit: cover;
             border-radius: 10px;
         }
 
         /* Botão Visitar o Site */
         .botao-visitar {
-            display: inline-block;
-            padding: 15px 30px; /* Aumenta o tamanho do botão */
-            background-color: #007bff;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: rgba(0, 123, 255, 0.8);
             color: #fff;
             border-radius: 5px;
             text-decoration: none;
-            margin-top: 10px;
             font-weight: bold;
             transition: background-color 0.3s, transform 0.2s;
-            font-size: 1.5rem; /* Aumenta o tamanho da fonte do botão */
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .botao-visitar:hover {
-            background-color: #0056b3;
-            transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+            background-color: rgba(0, 86, 179, 0.8);
+            transform: scale(1.05);
         }
 
         /* Rodapé */
@@ -146,132 +162,94 @@ $conn->close();
             text-align: center;
             font-size: 1.2rem;
             margin-top: auto;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
         }
 
         /* Estilo para data e hora */
         .data-hora {
-            font-size: 1.5rem; /* Aumenta o tamanho da fonte */
+            font-size: 1.5rem;
             color: #fff;
             margin-bottom: 5px;
+            text-align: center;
         }
 
         /* Responsividade */
         @media (max-width: 600px) {
             .container {
-                display: flex;
-                flex-direction: column; /* Muda a direção do layout para coluna */
-                align-items: center; /* Centraliza as caixas */
-                padding: 10px; /* Adiciona algum padding lateral */
+                grid-template-columns: 1fr; /* 1 coluna em dispositivos pequenos */
+                align-items: center;
+                padding: 10px;
             }
 
             .caixa {
-                width: 100%; /* Faz as caixas ocuparem 100% da largura */
-                max-width: 400px; /* Define uma largura máxima para as caixas */
-                margin: 10px 0; /* Adiciona margem entre as caixas */
+                width: 100%;
+                max-width: 200px;
+                margin: 10px 0;
             }
 
             .video-container {
-                height: auto; /* Deixa a altura do vídeo automática */
+                height: auto;
             }
         }
 
         @media (min-width: 600px) {
             .video-container {
-                height: 250px; /* Ajusta a altura do vídeo em telas grandes */
+                height: 250px;
             }
         }
     </style>
+
 </head>
 <body>
-<header class="barraSuperior">
-    ATENDIMENTO - CHAMADA POR SENHA
-</header>
+    <header class="barraSuperior">
+        ATENDIMENTO - CHAMADA POR SENHA
+    </header>
 
-<main class="container">
-    <div class="caixa">
-        <div class="caixa-titulo">CAIXA</div>
-        <h2><div id="tipoSenha"><strong><?php echo strtoupper($cliente['tipo_senha']); ?></strong></div></h2>
-    </div>
-    <div class="caixa">
-        <div class="caixa-titulo">ANTERIORES</div>
-        <h2><div id="senhaAnterior" class="numero"><strong><?php echo $senha_anterior; ?></strong></div></h2>
-    </div>
-    <div class="caixa">
-        <div class="caixa-titulo">USUÁRIO</div>
-        <h3><div id="nomeCliente"><strong><?php echo $cliente['nome']; ?></strong></div></h3>
-        <h2><div id="senhaGerada" class="numero"><strong><?php echo $cliente['senha_gerada']; ?></strong></div></h2>
-    </div>
-    
-    <div class="caixa" style="grid-column: span 2;"> <!-- Faz a caixa ocupar duas colunas -->
-        <div class="caixa-titulo">ANÚNCIO</div>
-        <div class="video-container">
-            <video autoplay loop muted>
-                <source src="video/SEO_Summerside.mp4" type="video/mp4">
-                Seu navegador não suporta vídeo HTML5.
-            </video>
+    <main class="container">
+        <div class="caixa">
+            <div class="caixa-titulo">USUÁRIO</div>
+            <h3><strong id="nomeCliente"><?php echo $cliente['nome']; ?></strong></h3>
+            <h2><strong id="senhaGerada" class="numero"><?php echo $cliente['senha_gerada']; ?></strong></h2>
         </div>
-        <a href="https://painelsummerside.com.br" class="botao-visitar" style="color: blue">Visitar o Site</a>
-    </div>
-    <div class="caixa">
-        <div class="caixa-titulo">ANÚNCIO</div>
-        <div class="video-container">
-            <video autoplay loop muted>
-                <source src="video/google_meu_negocio.mp4" type="video/mp4">
-                Seu navegador não suporta vídeo HTML5.
-            </video>
+        <div class="caixa">
+            <div class="caixa-titulo">ANTERIORES</div>
+            <h2><strong id="senhaAnterior" class="numero"><?php echo $senha_anterior; ?></strong></h2>
         </div>
-        <a href="https://painelsummerside.com.br" class="botao-visitar">Visitar o Site</a>
-    </div>
-</main>
+        <div class="caixa">
+            <div class="caixa-titulo">TIPO DE SENHA</div>
+            <h3><strong id="tipoSenha"><?php echo $cliente['tipo_senha']; ?></strong></h3>
+        </div>
+        <div class="caixa">
+            <div class="caixa-titulo">SENHAS EM ESPERA</div>
+            <h3><strong id="senhasEmEspera">5</strong></h3>
+        </div>
+        <div class="caixa">
+            <div class="caixa-titulo">ATENDIMENTO EM ANDAMENTO</div>
+            <h3><strong id="atendimentoEmAndamento">2</strong></h3>
+        </div>
+    </main>
 
-<footer class="footer">
-    <p>© Sis Panel - Todos os direitos reservados</p>
-</footer>
+    <footer class="footer">
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="SEO_Summerside.mp4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+            <a href="#" class="botao-visitar">Visitar o Site</a>
+        </div>
+        <div class="data-hora" id="dataHora"></div>
+    </footer>
 
-<!-- Áudio de chamada -->
-<audio id="audioChamada" src="audio/chamada.wav"></audio>
-<!-- Áudio da narração -->
-<audio id="audioNarracao" src="audio/narracao.mp3"></audio>
-
-<script>
-    function tocarAudio() {
-        const audio = document.getElementById('audioChamada');
-        audio.play();
-    }
-
-    function tocarNarracao() {
-        const narracao = document.getElementById('audioNarracao');
-        narracao.play();
-    }
-
-    function atualizarDados() {
-        const nomeCliente = document.getElementById('nomeCliente');
-        const senhaGerada = document.getElementById('senhaGerada');
-
-        // Aqui você pode definir as variáveis 'nome' e 'senha' a partir de seus dados
-        const nome = '<?php echo $cliente['nome']; ?>'; 
-        const senha = '<?php echo $cliente['senha_gerada']; ?>'; 
-
-        // Atualiza os elementos
-        nomeCliente.innerHTML = `<strong>${nome}</strong>`;
-        senhaGerada.innerHTML = `<strong>${senha}</strong>`;
-
-        // Toca a narração após atualizar os dados
-        tocarNarracao();
-    }
-
-    // Chama a função para atualizar os dados e tocar áudio
-    atualizarDados();
-    setInterval(atualizarDados, 10000); // Atualiza os dados a cada 10 segundos
-
-    // Atualiza a página a cada 40 segundos
-    setInterval(function() {
-        location.reload();
-    }, 40000); // 40000 milissegundos = 40 segundos
-
-    // Tocar o áudio de chamada no início
-    tocarAudio();
-</script>
+    <script>
+        // Função para atualizar a data e hora em tempo real
+        function atualizarDataHora() {
+            const agora = new Date();
+            const dataHora = agora.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+            document.getElementById('dataHora').innerText = dataHora;
+        }
+        setInterval(atualizarDataHora, 1000);
+    </script>
 </body>
 </html>
+
 
