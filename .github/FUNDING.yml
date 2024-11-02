@@ -9,6 +9,10 @@ bipa_app:
 Bipa: 
   alemaodacapa@bipa.app
 
+# Logo da Bipa
+logo: 
+  ![Bipa Logo](https://alemaodacapa@bipa.app/_app/immutable/assets/bipa-logo-name.a282f913.png)
+
 custom: 
   - 'https://pay.hotmart.com/Y95202654S'  # Link para Hotmart
   - 'https://api.whatsapp.com/send/?phone=5511948793902'  # Link do WhatsApp
