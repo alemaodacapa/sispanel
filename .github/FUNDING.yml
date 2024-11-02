@@ -1,4 +1,9 @@
 # Estas são as plataformas de modelo de financiamento suportadas.
+ko_fi: 
+  alemaodacapa_ko-fi
+
+buy_me_a_coffee: 
+  alemaodacapa_bmc
 
 github: 
   - alemaodacapa
@@ -8,10 +13,6 @@ bipa_app:
 
 Bipa: 
   alemaodacapa@bipa.app
-
-# Logo da Bipa
-logo: 
-  ![Bipa Logo](https://alemaodacapa@bipa.app/_app/immutable/assets/bipa-logo-name.a282f913.png)
 
 custom: 
   - 'https://pay.hotmart.com/Y95202654S'  # Link para Hotmart
