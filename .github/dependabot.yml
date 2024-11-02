@@ -2,12 +2,12 @@ version: 2
 updates:
   # Atualizações para dependências Python
   - package-ecosystem: "pip" # Para projetos Python
-    directory: "/src" # Diretório onde o requirements.txt está localizado
+    directory: "/iniciar_projeto.py" # Diretório onde o requirements.txt está localizado
     schedule:
       interval: "weekly"
 
   # Atualizações para dependências Node.js
   - package-ecosystem: "npm" # Para projetos Node.js
-    directory: "/" # Diretório onde o package.json está localizado (raiz do projeto)
+    directory: "/package.json" # Diretório onde o package.json está localizado (raiz do projeto)
     schedule:
       interval: "weekly"
