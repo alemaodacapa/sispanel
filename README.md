@@ -2,7 +2,7 @@
 
 ---
 
-<p align="center"><img alt="painel-smm" src="https://monetizabrasil.com.br/imagens/branding.png"></p>
+<p align="center"><img alt="painel-smm" src="https://monetizabrasil.com.br/images/branding.png"></p>
 
 <h1 align="center">MonetizaBrasil - Painel SMM</h1>
 <p align="center">
