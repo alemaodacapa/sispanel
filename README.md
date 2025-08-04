@@ -2,7 +2,7 @@
 
 ---
 
-<p align="center"><img alt="e-painel" src="https://e-painel.x10.mx/imagens/computer-illustration.png"></p>
+<p align="center"><img alt="e-painel" src="https://cam.painelsummerside.com.br/img/computer-illustration.png"></p>
 
 <h1 align="center">e-painel (BETA)</h1>
 <p align="center">
