@@ -22,6 +22,6 @@
     "mysql": "^2.18.1" // Adiciona a dependência do MySQL
   },
   "devDependencies": {
-    "nodemon": "^2.0.22" // Para desenvolvimento, reinicia o servidor automaticamente
+    "nodemon": "^3.1.7" // Para desenvolvimento, reinicia o servidor automaticamente
   }
 }
